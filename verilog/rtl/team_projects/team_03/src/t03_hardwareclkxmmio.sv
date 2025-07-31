@@ -1,6 +1,6 @@
 `default_nettype none
 `timescale 1ps/1ps
-module hardwareclkxmmio(
+module t03_hardwareclkxmmio(
     input logic clk, rst,
     input logic [31:0] new_counter,
     output logic [31:0] data_to_CPU,

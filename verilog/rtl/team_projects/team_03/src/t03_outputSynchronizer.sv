@@ -3,7 +3,7 @@
 
 //We want an edge detector for A and B here, so when those are pressed, they are only asserted for a couple of cycles until they are pressed again
 
-module outputSynchronizer(
+module t03_outputSynchronizer(
     input logic clk, rst,
     input logic [15:0] controllerInputs,
     output logic [15:0] syncronizedOut, //happens after 2 flip flops

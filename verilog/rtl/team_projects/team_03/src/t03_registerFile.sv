@@ -2,7 +2,7 @@
 `default_nettype none
 `timescale 1ps/1ps
 
-module registerFile(
+module t03_registerFile(
     input logic clk, regwrite, reset, memToReg, jal,
     input logic [31:0] instruction, result_ALU, data_out, pc,
     output logic [31:0] read_data1, read_data2

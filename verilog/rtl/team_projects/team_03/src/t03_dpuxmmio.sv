@@ -1,7 +1,7 @@
 `default_nettype none
 `timescale 1ps/1ps
 
-module dpuxmmio(
+module t03_dpuxmmio(
     input logic [31:0] addr, data,
     input logic clk,rst,
     output logic [2:0]  gameState,

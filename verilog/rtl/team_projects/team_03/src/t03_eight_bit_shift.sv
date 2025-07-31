@@ -1,7 +1,7 @@
 `default_nettype none
 `timescale 1ps/1ps
 
-module eight_bit_shift(
+module t03_eight_bit_shift(
     input logic clk, rst, button_en, data, finished,//data is the serial input from the controller
     output logic [7:0] latchedValue
 );

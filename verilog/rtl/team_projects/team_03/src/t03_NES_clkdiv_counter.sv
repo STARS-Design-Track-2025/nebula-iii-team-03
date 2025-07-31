@@ -1,7 +1,7 @@
 `default_nettype none
 `timescale 1ps/1ps
 
-module NES_clkdiv_counter
+module t03_NES_clkdiv_counter
 
  //its the clock divider for the counter used for NES controller 
 (

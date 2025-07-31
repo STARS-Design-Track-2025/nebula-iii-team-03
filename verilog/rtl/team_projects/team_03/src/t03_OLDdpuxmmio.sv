@@ -1,7 +1,7 @@
 `default_nettype none
 `timescale 1ms/10ps
 
-module OLDdpuxmmio(
+module t03_OLDdpuxmmio(
     input logic [31:0] addr, data, //in from mmio
     input logic clk,rst,
     output logic [1:0] gameState, p1State, p2State,

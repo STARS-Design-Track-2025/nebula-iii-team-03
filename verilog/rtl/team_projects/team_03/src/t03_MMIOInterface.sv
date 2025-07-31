@@ -1,7 +1,7 @@
 `default_nettype none
 `timescale 1ps/1ps
 
-module MMIOInterface(
+module t03_MMIOInterface(
     input logic rst,
     input logic clk,
     input logic [31:0] data,
@@ -75,10 +75,10 @@ module MMIOInterface(
     
     
     //DPU Data Path
-    dpuxmmio dpummio(.addr(dpu_addro), .data(dpu_d), .clk(clk), .rst(rst), 
+    t03_dpuxmmio dpummio(.addr(dpu_addro), .data(dpu_d), .clk(clk), .rst(rst), 
     .gameState(gameState), .p1State(p1State), .p2State(p2State), .p1health(p1health), .p2health(p2health), .x1(x1), .y1(y1), .x2(x2), .y2(y2), .p1Left(p1Left), .p2Left(p2Left));
 
-    MMIO mmio(.clk(clk), .rst(rst),
+    t03_MMIO mmio(.clk(clk), .rst(rst),
     .wb_di(wb_di), .wb_ack(wb_ack), //Wishbone inputs
     .cpu_din(data), .cpu_addr(address), .cpu_wen(write), .cpu_ren(read), //cpu inputs
     .NES_din(NES_din), .NES_ack(NES_ack), //NES controller inputs
@@ -88,7 +88,7 @@ module MMIOInterface(
     .dpu_addro(dpu_addro), .dpu_do(dpu_d)
     );
 
-    wishbone_manager manager(.nRST(n_rst), .CLK(clk), 
+    t03_wishbone_manager manager(.nRST(n_rst), .CLK(clk), 
     .DAT_I(DAT_I), .ACK_I(ACK_I), //WISHBONE INPUT SIGNALS
     .CPU_DAT_I(wb_do), .ADR_I(wb_addro), .SEL_I(wb_sel), .WRITE_I(wb_wen), .READ_I(wb_ren), //input from user design
     .ADR_O(ADR_O), .DAT_O(DAT_O), .SEL_O(SEL_O), .WE_O(WE_O), .STB_O(STB_O), .CYC_O(CYC_O),  //WISHBONE OUTPUT SIGNALS

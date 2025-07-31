@@ -1,7 +1,7 @@
 `default_nettype none
 `timescale 1ps/1ps
 
-module instrHolder (
+module t03_instrHolder (
     input logic clk,
     input logic rst,
     input logic [31:0] dataOut,

@@ -1,5 +1,5 @@
 `default_nettype none
-module player_lut #(parameter int player_height = 20, parameter int player_width = 15)
+module t03_player_lut #(parameter int player_height = 20, parameter int player_width = 15)
 (   
     //[0:11] Means you have 12 characters. Alaphabet input is 5 bits and gives you acces to 2^6 characters!!
     input logic [3:0] player_state,

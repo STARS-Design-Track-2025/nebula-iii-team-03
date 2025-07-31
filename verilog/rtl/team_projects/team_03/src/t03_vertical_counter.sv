@@ -1,7 +1,7 @@
 `default_nettype none
 `timescale 1ps/1ps
 
-module vertical_counter
+module t03_vertical_counter
 (
     input logic rst,
     input logic clk,

@@ -1,7 +1,7 @@
 `default_nettype none
 `timescale 1ps/1ps
 
-module text_display
+module t03_text_display
 (
   input logic [10:0] Hcnt,
   input logic [10:0] Vcnt,

@@ -1,6 +1,6 @@
 `default_nettype none
 `timescale 1ps/1ps
-module bin4_to_bcd_decoder (
+module t03_bin4_to_bcd_decoder (
     input  logic [3:0] health,
     output logic [11:0] phealth
 );

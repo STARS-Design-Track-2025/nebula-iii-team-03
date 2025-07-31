@@ -2,7 +2,7 @@
 `timescale 1ps/1ps
 //This is not an official lut just to test
 //output logic [71:0] text //Dimensions are up for grabs end index equals with * length - 1
-module text_lut #(parameter int number_of_chars = 12, parameter int character_bits = 72, parameter int char_size = 6)
+module t03_text_lut #(parameter int number_of_chars = 12, parameter int character_bits = 72, parameter int char_size = 6)
 (   
     //[0:11] Means you have 12 characters. Alaphabet input is 5 bits and gives you acces to 2^6 characters!!
     input logic [char_size*(number_of_chars)-1:0] alphabet,

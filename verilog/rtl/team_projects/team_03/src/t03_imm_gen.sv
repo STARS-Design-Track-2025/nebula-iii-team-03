@@ -3,7 +3,7 @@
 `default_nettype none
 `timescale 1ps/1ps
 
-module imm_gen(
+module t03_imm_gen(
     input logic [31:0] instruction,
     output logic [31:0] immediate
 );

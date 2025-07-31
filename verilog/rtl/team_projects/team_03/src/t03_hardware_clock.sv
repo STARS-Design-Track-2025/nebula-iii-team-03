@@ -1,6 +1,6 @@
 `default_nettype none
 `timescale 1ps/1ps
-module hardware_clock(
+module t03_hardware_clock(
     input logic clk, rst,
     output logic [31:0] new_counter
 );

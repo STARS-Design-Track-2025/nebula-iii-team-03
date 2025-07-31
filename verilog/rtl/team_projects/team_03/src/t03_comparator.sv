@@ -1,6 +1,6 @@
 `default_nettype none
 `timescale 1ps/1ps
-module comparator
+module t03_comparator
 (
     input logic [10:0] Hcnt,
     input logic [10:0] Vcnt,

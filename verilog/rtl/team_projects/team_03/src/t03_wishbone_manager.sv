@@ -1,5 +1,3 @@
-`default_nettype none
-`timescale 1ps/1ps
 /**
 Wishbone Bus Manager
 STARS 2024
@@ -8,7 +6,7 @@ Author: Matthew Erlichson
 
 //states for the 3 state bus state machine
 
-module wishbone_manager(
+module t03_wishbone_manager(
     //clock and reset of course
     input logic nRST, CLK,
     
@@ -38,9 +36,9 @@ module wishbone_manager(
 );
 
 typedef enum logic[1:0] {
-    IDLE,
-    WRITE,
-    READ
+    IDLE_WB,
+    WRITE_WB,
+    READ_WB
  } state;
 
 
@@ -59,11 +57,10 @@ logic        next_BUSY_O;
 
 assign ACK_O = ACK_I;
 
-
 always_ff @(posedge CLK, negedge nRST) begin : All_ffs
     if(~nRST) begin
         //state machine
-        curr_state <= IDLE;
+        curr_state <= IDLE_WB;
 
         //registers for user project outputs
         CPU_DAT_O <= '0;
@@ -105,48 +102,31 @@ always_comb begin
     next_BUSY_O = BUSY_O;    
     
     case(curr_state)
-        IDLE: begin
+        IDLE_WB: begin
             if(WRITE_I && !READ_I) begin
+                next_ADR_O  = ADR_I;
+                next_DAT_O  = CPU_DAT_I;
+                next_SEL_O  = SEL_I;
+                next_WE_O   = 1'b1;
+                next_STB_O  = 1'b1;
+                next_CYC_O  = 1'b1;
                 next_BUSY_O = 1'b1;
-                next_state  = WRITE;
+                next_state  = WRITE_WB;
             end
             if(!WRITE_I && READ_I) begin
+                next_ADR_O  = ADR_I;
+                next_DAT_O  = '0;
+                next_SEL_O  = SEL_I;
+                next_WE_O   = '0;
+                next_STB_O  = 1'b1;
+                next_CYC_O  = 1'b1;
                 next_BUSY_O = 1'b1;
-                next_state  = READ;
+                next_state  = READ_WB;
             end
         end     
-        WRITE: begin
-            next_ADR_O  = ADR_I;
-            next_DAT_O  = CPU_DAT_I;
-            next_SEL_O  = SEL_I;
-            next_WE_O   = 1'b1;
-            next_STB_O  = 1'b1;
-            next_CYC_O  = 1'b1;
-            next_BUSY_O = 1'b1;
-
+        WRITE_WB, READ_WB: begin
             if(ACK_I) begin
-                next_state = IDLE;
-
-                next_ADR_O  = '0;
-                next_DAT_O  = '0;
-                next_SEL_O  = '0;
-                next_WE_O   = '0;
-                next_STB_O  = '0;
-                next_CYC_O  = '0;
-                next_BUSY_O = '0;
-            end
-        end
-        READ: begin
-            next_ADR_O  = ADR_I;
-            next_DAT_O  = '0;
-            next_SEL_O  = SEL_I;
-            next_WE_O   = '0;
-            next_STB_O  = 1'b1;
-            next_CYC_O  = 1'b1;
-            next_BUSY_O = 1'b1;
-
-            if(ACK_I) begin
-                next_state = IDLE;
+                next_state = IDLE_WB;
 
                 next_ADR_O  = '0;
                 next_DAT_O  = '0;
@@ -182,7 +162,7 @@ assign BUSY_O_edge = (!BUSY_O && prev_BUSY_O);
 always_comb begin
     next_CPU_DAT_O = 32'hBAD1BAD1;
 
-    if((curr_state == READ) && ACK_I) begin
+    if((curr_state == READ_WB) && ACK_I) begin
         next_CPU_DAT_O = DAT_I;
     end
     else if(BUSY_O_edge) begin

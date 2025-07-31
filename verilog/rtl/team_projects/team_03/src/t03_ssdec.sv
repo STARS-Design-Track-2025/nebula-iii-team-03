@@ -1,7 +1,7 @@
 `default_nettype none
 `timescale 1ms/10ps
 
-module ssdec(input [3:0] in,
+module t03_ssdec(input [3:0] in,
               input enable,
               output [7:0] out);
   

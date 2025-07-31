@@ -1,7 +1,7 @@
 `default_nettype none
 `timescale 1ms/10ps
 
-module branchControl (
+module t03_branchControl (
   input logic [2:0] branch,
   input logic [1:0] jump,
   input logic zero,

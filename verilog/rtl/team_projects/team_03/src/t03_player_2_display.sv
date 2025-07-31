@@ -1,6 +1,6 @@
 `default_nettype none
 `timescale 1ps/1ps
-module player_2_display
+module t03_player_2_display
 (
   input logic [10:0] Hcnt,
   input logic [10:0] Vcnt,

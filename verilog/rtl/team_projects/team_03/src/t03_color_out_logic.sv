@@ -1,6 +1,6 @@
 `default_nettype none
 `timescale 1ps/1ps
-module color_out_logic(
+module t03_color_out_logic(
 
     //add inputs accordingly for more sprites, etc
     input logic [7:0] player_1_sprite,

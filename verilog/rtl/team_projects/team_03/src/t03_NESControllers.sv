@@ -2,7 +2,7 @@
 `timescale 1ms/10ps
 // Empty top module
 
-module NESControllers (
+module t03_NESControllers (
   // I/O ports
   input logic clk, rst, //hz100 is currently 10MHz, check PPL in ice40hx8k.sv to change it 
   input logic [20:0] pb,
@@ -25,12 +25,12 @@ module NESControllers (
   logic buttonAPressP2;
   logic buttonBPressP2;
 
-  NES_clkdiv_counter clkdivider (.clk(clk), .rst(rst), .clkdiv(clkdiv), .finished(finished), .button_en(button_en), .latch(ss7[2]), .pulse(ss7[3]), .counter(counter));
-  eight_bit_shift shifter1 (.clk(clk), .rst(rst), .button_en(button_en), .data(pb[4]), .finished(finished), .latchedValue(parallelOut1));
-  eight_bit_shift shifter2 (.clk(clk), .rst(rst), .button_en(button_en), .data(pb[5]), .finished(finished), .latchedValue(parallelOut2));
+  t03_NES_clkdiv_counter clkdivider (.clk(clk), .rst(rst), .clkdiv(clkdiv), .finished(finished), .button_en(button_en), .latch(ss7[2]), .pulse(ss7[3]), .counter(counter));
+  t03_eight_bit_shift shifter1 (.clk(clk), .rst(rst), .button_en(button_en), .data(pb[4]), .finished(finished), .latchedValue(parallelOut1));
+  t03_eight_bit_shift shifter2 (.clk(clk), .rst(rst), .button_en(button_en), .data(pb[5]), .finished(finished), .latchedValue(parallelOut2));
 
-  player_FSM_new fsm1 (.clk(clk), .rst(rst), .finished(finished), .buttonAPress(parallelOut1[7]), .buttonBPress(parallelOut1[6]), .player_state(player_state1), .resting(p1Resting));
-  player_FSM_new fsm2 (.clk(clk), .rst(rst), .finished(finished), .buttonAPress(parallelOut2[7]), .buttonBPress(parallelOut2[6]), .player_state(player_state2), .resting(p2Resting));
+  t03_player_FSM_new fsm1 (.clk(clk), .rst(rst), .finished(finished), .buttonAPress(parallelOut1[7]), .buttonBPress(parallelOut1[6]), .player_state(player_state1), .resting(p1Resting));
+  t03_player_FSM_new fsm2 (.clk(clk), .rst(rst), .finished(finished), .buttonAPress(parallelOut2[7]), .buttonBPress(parallelOut2[6]), .player_state(player_state2), .resting(p2Resting));
 
   assign controllerInputs = {~parallelOut1, ~parallelOut2};
 

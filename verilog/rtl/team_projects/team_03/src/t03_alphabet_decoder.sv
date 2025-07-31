@@ -1,4 +1,4 @@
-module alphabet_decoder
+module t03_alphabet_decoder
 (
     input logic  [2:0] game_state,
     output logic [71:0] alphabet,

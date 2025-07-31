@@ -1,6 +1,6 @@
 `timescale 1ms/10ps
 
-module control(
+module t03_control(
 input logic [6:0] opcode,
 input logic [2:0] funct3,
 input logic funct7bit6, //Bit 6 from funct 7

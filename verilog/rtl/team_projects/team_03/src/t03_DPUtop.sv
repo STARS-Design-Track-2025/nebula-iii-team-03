@@ -2,7 +2,7 @@
 `timescale 1ps/1ps
 // Empty top module
 
-module DPUtop (
+module t03_DPUtop (
   // I/O ports
   input  logic clk, rst, //clk is currently 10MHz, check PPL in ice40hx8k.sv to change it 
   input logic [2:0] gameState,
@@ -63,26 +63,26 @@ module DPUtop (
   logic [7:0] text_color;
  
     //10MHZ to 2HZ(1 second)
-  bin4_to_bcd_decoder player_1_health_decoder(.health(p1health), .phealth(p1health1d));
-  bin4_to_bcd_decoder player_2_health_decoder(.health(p2health), .phealth(p2health2d));
-  alphabet_decoder state_decoder(.clk(clk), .rst(rst), .game_state(gameState), .alphabet(alphabet), .p1health(p1health1d), .p2health(p2health2d),  .text_color(text_color));
+  t03_bin4_to_bcd_decoder player_1_health_decoder(.health(p1health), .phealth(p1health1d));
+  t03_bin4_to_bcd_decoder player_2_health_decoder(.health(p2health), .phealth(p2health2d));
+  t03_alphabet_decoder state_decoder(.clk(clk), .rst(rst), .game_state(gameState), .alphabet(alphabet), .p1health(p1health1d), .p2health(p2health2d),  .text_color(text_color));
   
-  clock_divider clock_divider(.hwclk(clk), .rst(rst), .clkdiv(clk_2hz));
-  horizontal_counter horzintal(.tc(tc), .rst(rst), .clk(clk), .Hcnt(Hcnt));
-  vertical_counter vertical(.tc(tc), .clk(clk), .Vcnt(Vcnt), .rst(rst));
-  comparator comparer(.Hcnt(Hcnt),.Vcnt(Vcnt), .hsync(hsync), .vsync(vsync), .at_display(at_display));
+  t03_clock_divider clock_divider(.hwclk(clk), .rst(rst), .clkdiv(clk_2hz));
+  t03_horizontal_counter horzintal(.tc(tc), .rst(rst), .clk(clk), .Hcnt(Hcnt));
+  t03_vertical_counter vertical(.tc(tc), .clk(clk), .Vcnt(Vcnt), .rst(rst));
+  t03_comparator comparer(.Hcnt(Hcnt),.Vcnt(Vcnt), .hsync(hsync), .vsync(vsync), .at_display(at_display));
 
-  text_lut text_lutter(.alphabet(alphabet), .characters(characters));
-  text_display display_logic(.Hcnt(Hcnt),.Vcnt(Vcnt),.text(characters),.color(text_color_out), .clk(clk),.rst(rst), .x(11'd30), .y(11'd100));
+  t03_text_lut text_lutter(.alphabet(alphabet), .characters(characters));
+  t03_text_display display_logic(.Hcnt(Hcnt),.Vcnt(Vcnt),.text(characters),.color(text_color_out), .clk(clk),.rst(rst), .x(11'd30), .y(11'd100));
 
 
   //input p1Left & p2Left here.
-  player_1_display player_1_display(.Hcnt(Hcnt),.Vcnt(Vcnt),.player(player_sprite),.color(player_1_color_out),.clk(clk),.rst(rst),.x(x1),.y(11'd500 - y1), .is_1_displayed(is_1_displayed));
-  player_2_display player_2_display(.Hcnt(Hcnt),.Vcnt(Vcnt),.player(player_sprite),.color(player_2_color_out),.clk(clk),.rst(rst),.x(x2),.y(11'd500 - y2), .is_2_displayed(is_2_displayed));
-  player_lut player(.player_state({p2State,p1State}), .player(player_sprite), .is_1_displayed(is_1_displayed), .is_2_displayed(is_2_displayed), .p1Left(p1Left), .p2Left(p2Left));
+  t03_player_1_display player_1_display(.Hcnt(Hcnt),.Vcnt(Vcnt),.player(player_sprite),.color(player_1_color_out),.clk(clk),.rst(rst),.x(x1),.y(11'd500 - y1), .is_1_displayed(is_1_displayed));
+  t03_player_2_display player_2_display(.Hcnt(Hcnt),.Vcnt(Vcnt),.player(player_sprite),.color(player_2_color_out),.clk(clk),.rst(rst),.x(x2),.y(11'd500 - y2), .is_2_displayed(is_2_displayed));
+  t03_player_lut player(.player_state({p2State,p1State}), .player(player_sprite), .is_1_displayed(is_1_displayed), .is_2_displayed(is_2_displayed), .p1Left(p1Left), .p2Left(p2Left));
 
 
-  color_out_logic color_comparator(.player_1_sprite(player_1_color_out), .player_2_sprite(player_2_color_out), .text_sprite(text_color_out), .text_color(text_color), .color_out(color), .Hcnt(Hcnt), .Vcnt(Vcnt));
+  t03_color_out_logic color_comparator(.player_1_sprite(player_1_color_out), .player_2_sprite(player_2_color_out), .text_sprite(text_color_out), .text_color(text_color), .color_out(color), .Hcnt(Hcnt), .Vcnt(Vcnt));
 
   logic [31:0] address;
   logic [31:0] mock_data;

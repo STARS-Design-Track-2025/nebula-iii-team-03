@@ -1,7 +1,7 @@
 `default_nettype none
 `timescale 1ps/1ps
 //6718863,
-module player_FSM_new #(
+module t03_player_FSM_new #(
     parameter MAX_COUNT = 26'd6718863,
                 HALF_COUNT = 26'd3359432,
                 THREE_QUARTER_COUNT = 26'd5039147

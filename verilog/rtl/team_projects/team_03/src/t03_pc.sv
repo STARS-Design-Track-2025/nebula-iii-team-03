@@ -1,7 +1,7 @@
 `default_nettype none
 `timescale 1ms/10ps
 
-module pc # (parameter BASE_ADDRESS = 0) (
+module t03_pc # (parameter BASE_ADDRESS = 0) (
     input logic clk,
     input logic rst,
     input logic freezePc,

@@ -1,7 +1,7 @@
 `default_nettype none
 `timescale 1ps/1ps
 
-module MMIO(
+module t03_MMIO(
     input logic clk,rst,
 
     //wishbone inputs

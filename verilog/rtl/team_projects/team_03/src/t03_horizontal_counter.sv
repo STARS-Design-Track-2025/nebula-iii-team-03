@@ -1,4 +1,4 @@
-module horizontal_counter
+module t03_horizontal_counter
 (
     output logic tc, //this is the terminal counter (turns on when full horizontal scan line has been completed)
     input logic rst,

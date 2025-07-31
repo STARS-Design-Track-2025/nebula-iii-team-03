@@ -1,6 +1,6 @@
 `default_nettype none
 `timescale 1ps/1ps
-module clock_divider
+module t03_clock_divider
 (
     input logic hwclk,
     output logic clkdiv,

@@ -1,5 +1,5 @@
 `default_nettype none
-module alu (
+module t03_alu (
 input logic [3:0] control, // control signal from control unit
 input logic [31:0] pc, immediate, rd1,rd2,
 input logic ALUSrc, Auipc, lui,

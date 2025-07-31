@@ -42,7 +42,7 @@ module top (
     assign blue = DEBUGfreezePc;
 
 
-    cputop CPU(.clk(clk), .rst(rst),
+    t03_cputop CPU(.clk(clk), .rst(rst),
     .ack(ack), .dataOut(dataOut), //Inputs from MMIO
     .data(data), .address(address), //Outputs into MMIO
     .write(write), .read(read), //Outputs into MMIO
@@ -56,7 +56,7 @@ module top (
     logic [10:0] x1, x2, y1, y2;
     logic p1Left, p2Left;
 
-    MMIOInterface MMIOInterface(.rst(rst), .clk(clk),
+    t03_MMIOInterface MMIOInterface(.rst(rst), .clk(clk),
     .data(data), .address(address), .write(write), .read(read), .dataOut(dataOut), .ack(ack), //CPU Inputs/Outputs
     .new_counter(new_counter), //From Hardware Counter
     .NESData(NESData), .NESConfirm(NESConfirm), //NES Inputs
@@ -68,12 +68,12 @@ module top (
     //C5
     //B9 
 
-    NESControllers NES(.clk(clk), .rst(rst), .pb(pb), .confirm(NESConfirm), .packedOutput(NESData), .ss7(ss7));
-    hardware_clock hardwareClk(.clk(clk), .rst(rst), .new_counter(new_counter));
+    t03_NESControllers NES(.clk(clk), .rst(rst), .pb(pb), .confirm(NESConfirm), .packedOutput(NESData), .ss7(ss7));
+    t03_hardware_clock hardwareClk(.clk(clk), .rst(rst), .new_counter(new_counter));
     // assign ss0 = NESData[31:24]; //tests the states that we have
     // assign ss0 = NESData[23:16]; //tests the individual button inputs of just controller 1
 
-    DPUtop DPU(.clk(clk), .rst(rst), .gameState(gameState), .p1State(p1State), .p2State(p2State), .p1health(p1health),
+    t03_DPUtop DPU(.clk(clk), .rst(rst), .gameState(gameState), .p1State(p1State), .p2State(p2State), .p1health(p1health),
     .p2health(p2health), .x1(x1), .x2(x2), .y1(y1), .y2(y2), .left(DPUleft), .right(DPUright), .p1Left(p1Left), .p2Left(p2Left));
 
     logic [7:0] DPUleft;
