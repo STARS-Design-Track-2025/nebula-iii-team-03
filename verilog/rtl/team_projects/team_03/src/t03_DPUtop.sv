@@ -10,7 +10,8 @@ module t03_DPUtop (
   input logic [3:0] p1health, p2health,
   input logic [10:0] x1, x2, y1, y2,
   input logic p1Left, p2Left, 
-  output logic [7:0] left, right
+  output logic [7:0] right,
+  output logic [1:0] left
 );
   // Your code goes here...
 
@@ -46,7 +47,6 @@ module t03_DPUtop (
 
    assign left[0] = hsync;
    assign left[1] = vsync;
-   assign left[7:2] = 0;
 
   logic [71:0] alphabet;
   logic [863:0] characters;

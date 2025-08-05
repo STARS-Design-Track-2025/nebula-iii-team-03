@@ -20,23 +20,22 @@ module t03_MMIOInterface(
     output logic [1:0] p2State,
     output logic [3:0] p1health,
     output logic [3:0] p2health,
-    output logic [10:0] x1,x2,y1,y2
+    output logic [10:0] x1,x2,y1,y2,
+
+    // WISHBONE SIGNALS
+    output logic [31:0] ADR_O,
+    output logic [31:0] DAT_O,
+    output logic [3:0]  SEL_O,
+    output logic        WE_O,
+    output logic        STB_O,
+    output logic        CYC_O,
+    input logic [31:0]  DAT_I,
+    input logic         ACK_I
 );
     logic n_rst;
     assign n_rst = ~rst;
 
     logic busy; //We don't really use this
-
-    //WISHBONE SIGNALS
-    logic [31:0] DAT_I;
-    logic ACK_I;
-
-    logic [31:0] ADR_O;
-    logic [31:0] DAT_O;
-    logic [3:0] SEL_O;
-    logic WE_O;
-    logic STB_O;
-    logic CYC_O;
 
     //wishbone inputs
     logic  [31:0] wb_di; //wishbone data in
@@ -70,8 +69,6 @@ module t03_MMIOInterface(
 
     // logic [1:0] gameState, p1State, p2State;
     // logic [4:0] p1health, p2health;
-
-    logic p1Left, p2Left;
     
     
     //DPU Data Path
@@ -90,14 +87,14 @@ module t03_MMIOInterface(
 
     t03_wishbone_manager manager(.nRST(n_rst), .CLK(clk), 
     .DAT_I(DAT_I), .ACK_I(ACK_I), //WISHBONE INPUT SIGNALS
-    .CPU_DAT_I(wb_do), .ADR_I(wb_addro), .SEL_I(wb_sel), .WRITE_I(wb_wen), .READ_I(wb_ren), //input from user design
+    .CPU_DAT_I(wb_do), .ADR_I({8'h33, wb_addro[23:0]}), .SEL_I(wb_sel), .WRITE_I(wb_wen), .READ_I(wb_ren), //input from user design
     .ADR_O(ADR_O), .DAT_O(DAT_O), .SEL_O(SEL_O), .WE_O(WE_O), .STB_O(STB_O), .CYC_O(CYC_O),  //WISHBONE OUTPUT SIGNALS
     .CPU_DAT_O(wb_di), .BUSY_O(busy), .ACK_O(wb_ack) //output to user design
     );
 
-    sram_WB_Wrapper SRAM (.wb_clk_i(clk), .wb_rst_i(rst), .wbs_stb_i(STB_O), .wbs_cyc_i(CYC_O), //Inputs
-    .wbs_we_i(WE_O), .wbs_sel_i(SEL_O), .wbs_dat_i(DAT_O), .wbs_adr_i(ADR_O), //Inputs
-    .wbs_ack_o(ACK_I), .wbs_dat_o(DAT_I) //Outputs
-    );
+    // sram_WB_Wrapper SRAM (.wb_clk_i(clk), .wb_rst_i(rst), .wbs_stb_i(STB_O), .wbs_cyc_i(CYC_O), //Inputs
+    // .wbs_we_i(WE_O), .wbs_sel_i(SEL_O), .wbs_dat_i(DAT_O), .wbs_adr_i(ADR_O), //Inputs
+    // .wbs_ack_o(ACK_I), .wbs_dat_o(DAT_I) //Outputs
+    // );
 
 endmodule

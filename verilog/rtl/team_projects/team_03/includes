@@ -24,7 +24,7 @@
 -v $(USER_PROJECT_VERILOG)/rtl/team_projects/team_03/src/t03_NES_clkdiv_counter.sv
 -v $(USER_PROJECT_VERILOG)/rtl/team_projects/team_03/src/t03_NESControllers.sv
 -v $(USER_PROJECT_VERILOG)/rtl/team_projects/team_03/src/t03_OLDdpuxmmio.sv
--v $(USER_PROJECT_VERILOG)/rtl/team_projects/team_03/src/t03_outputSyncrhonizer.sv
+-v $(USER_PROJECT_VERILOG)/rtl/team_projects/team_03/src/t03_outputSynchronizer.sv
 -v $(USER_PROJECT_VERILOG)/rtl/team_projects/team_03/src/t03_pc.sv
 -v $(USER_PROJECT_VERILOG)/rtl/team_projects/team_03/src/t03_player_1_display.sv
 -v $(USER_PROJECT_VERILOG)/rtl/team_projects/team_03/src/t03_player_2_display.sv

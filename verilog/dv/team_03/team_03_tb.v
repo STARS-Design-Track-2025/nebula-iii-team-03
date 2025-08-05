@@ -148,7 +148,7 @@ module team_03_tb;
 		$dumpvars(0, team_03_tb.mprj_io, team_03_tb.uut.chip_core.mprj);
 
 		// Repeat cycles of 1000 clock edges as needed to complete testbench
-		repeat (1000) begin
+		repeat (100000) begin
 			repeat (1000) @(posedge clock);
 		end
 		$display("%c[1;31m",27);
@@ -170,6 +170,16 @@ module team_03_tb;
 		// Wait for design to be enabled
 		// before doing any checks
 		// *******************************
+
+
+		// Wait until Team 03 enables
+		wait(uut.chip_core.mprj.mprj.team_03_Wrapper.team_03_WB.instance_to_wrap.en == 1);
+		$display("\nTeam 03 has been enabled!!\n");
+
+		
+		// Wait for something to happen
+		repeat (1000000) @(negedge clock);
+		
 		
 		$display("%c[1;32m",27);
 		`ifdef GL
