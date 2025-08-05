@@ -28,7 +28,7 @@ end
 
 endmodule
 
-// module eight_bit_shift(
+// mo3dul3 eight_bit_shift(
 //     input logic clk, rst, button_en, data, //data is the serial input from the controller
 //     output logic [7:0] parallelOut_latched
 // );
