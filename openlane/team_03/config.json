@@ -26,7 +26,6 @@
     "dir::../../verilog/rtl/team_projects/team_03/src/t03_MMIOInterface.v",
     "dir::../../verilog/rtl/team_projects/team_03/src/t03_NES_clkdiv_counter.v",
     "dir::../../verilog/rtl/team_projects/team_03/src/t03_NESControllers.v",
-    "dir::../../verilog/rtl/team_projects/team_03/src/t03_outputSynchronizer.v",
     "dir::../../verilog/rtl/team_projects/team_03/src/t03_pc.v",
     "dir::../../verilog/rtl/team_projects/team_03/src/t03_player_1_display.v",
     "dir::../../verilog/rtl/team_projects/team_03/src/t03_player_2_display.v",
