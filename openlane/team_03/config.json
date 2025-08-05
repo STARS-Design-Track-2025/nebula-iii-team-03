@@ -6,7 +6,6 @@
         "dir::../../verilog/rtl/team_projects/team_03/team_03.sv",
     "dir::../../verilog/rtl/team_projects/team_03/team_03_WB.v",
     "dir::../../verilog/rtl/team_projects/team_03/team_03_Wrapper.sv",
-    "dir::../../verilog/rtl/team_projects/team_03/team_03.sv",
     "dir::../../verilog/rtl/team_projects/team_03/src/t03_alphabet_decoder.sv",
     "dir::../../verilog/rtl/team_projects/team_03/src/t03_alu.sv",
     "dir::../../verilog/rtl/team_projects/team_03/src/t03_bin4_to_bcd_decoder.sv",
