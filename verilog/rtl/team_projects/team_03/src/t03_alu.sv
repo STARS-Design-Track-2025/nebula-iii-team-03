@@ -26,8 +26,8 @@ assign num1_sign = num1[31];
 assign num2_sign = num2[31];
 logic cout, borrow_out; 
 
-ALUOPERATION operation;
-assign operation = ALUOPERATION'(control); //What does this line do? Nah I think ur good I just never saw that syntax before
+logic [3:0] operation;
+assign operation = control; //What does this line do? Nah I think ur good I just never saw that syntax before
 
 //alu muxes
 always_comb begin
