@@ -15,7 +15,6 @@
 -v $(USER_PROJECT_VERILOG)/rtl/team_projects/team_03/src/t03_dpuxmmio.v
 -v $(USER_PROJECT_VERILOG)/rtl/team_projects/team_03/src/t03_eight_bit_shift.v
 -v $(USER_PROJECT_VERILOG)/rtl/team_projects/team_03/src/t03_hardware_clock.v
--v $(USER_PROJECT_VERILOG)/rtl/team_projects/team_03/src/t03_hardwareclkxmmio.v
 -v $(USER_PROJECT_VERILOG)/rtl/team_projects/team_03/src/t03_horizontal_counter.v
 -v $(USER_PROJECT_VERILOG)/rtl/team_projects/team_03/src/t03_imm_gen.v
 -v $(USER_PROJECT_VERILOG)/rtl/team_projects/team_03/src/t03_instrHolder.v

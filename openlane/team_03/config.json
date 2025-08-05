@@ -19,7 +19,6 @@
     "dir::../../verilog/rtl/team_projects/team_03/src/t03_dpuxmmio.v",
     "dir::../../verilog/rtl/team_projects/team_03/src/t03_eight_bit_shift.v",
     "dir::../../verilog/rtl/team_projects/team_03/src/t03_hardware_clock.v",
-    "dir::../../verilog/rtl/team_projects/team_03/src/t03_hardwareclkxmmio.v",
     "dir::../../verilog/rtl/team_projects/team_03/src/t03_horizontal_counter.v",
     "dir::../../verilog/rtl/team_projects/team_03/src/t03_imm_gen.v",
     "dir::../../verilog/rtl/team_projects/team_03/src/t03_instrHolder.v",
