@@ -39,7 +39,7 @@ The first number represents the GPIO on the physical chip, while the second numb
 The external hardware components include 2 NES Controllers and a VGA Breakout Board which helps connect the output of the Digital to Analog Converter (DAC) to VGA. The schematic of the breadboard DAC to interface the GPIO is located in doc/team_03 as "Street Fighters Breadboard".
 
 ## Functionality Description and Testing
-Describe in detail how your project works and how to test it.
+To test the project, first use the "Street Fighters Breadboard" located in doc/team_03 to make a DAC. Then, using the GPIO labeled above, connect GPIO7-14 to the DAC, and use GPIO 5-6 to connect to the VGA Breakout Board. Furthermore, use jumper wires to help connect GPIO 15-18 to the 2 NES Controllers, which will be powered by 5V using an AD2. All information pertinent to the NES controllers and corresponding wires is labeled in the NES_controllers.png within doc/team_03.
 
 ## RTL Diagrams
-Include more than just block diagrams, including sub-block diagrams, state-transition diagrams, flowcharts, and timing diagrams. Please include any images or documents of these inside this folder (docs/team_03).
+All RTL Diagrams and pertinent information is located in docs/team_03.
