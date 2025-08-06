@@ -148,7 +148,7 @@ module team_03_tb;
 		$dumpvars(0, team_03_tb.mprj_io, team_03_tb.uut.chip_core.mprj);
 
 		// Repeat cycles of 1000 clock edges as needed to complete testbench
-		repeat (1000) begin
+		repeat (10000) begin
 			repeat (1000) @(posedge clock);
 		end
 		$display("%c[1;31m",27);
@@ -178,7 +178,7 @@ module team_03_tb;
 
 		
 		// Wait for something to happen
-		repeat (30000) @(negedge clock);
+		repeat (100000) @(negedge clock);
 		
 		
 		$display("%c[1;32m",27);
