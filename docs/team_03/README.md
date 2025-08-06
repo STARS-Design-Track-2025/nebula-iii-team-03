@@ -33,25 +33,7 @@ The first number represents the GPIO on the physical chip, while the second numb
 * **Pin 16 [12]** - Output - Latch signal for NES Controllers
 * **Pin 17 [13]** - Input - NES Player 1 Input
 * **Pin 18 [14]** - Input - NES Player 2 Input
-* **Pin 19 [15]** - Input or Output? - Pin Function? 
-* **Pin 20 [16]** - Input or Output? - Pin Function? 
-* **Pin 21 [17]** - Input or Output? - Pin Function? 
-* **Pin 22 [18]** - Input or Output? - Pin Function? 
-* **Pin 23 [19]** - Input or Output? - Pin Function? 
-* **Pin 24 [20]** - Input or Output? - Pin Function? 
-* **Pin 25 [21]** - Input or Output? - Pin Function? 
-* **Pin 26 [22]** - Input or Output? - Pin Function? 
-* **Pin 27 [23]** - Input or Output? - Pin Function? 
-* **Pin 28 [24]** - Input or Output? - Pin Function? 
-* **Pin 29 [25]** - Input or Output? - Pin Function?
-* **Pin 30 [26]** - Input or Output? - Pin Function?
-* **Pin 31 [27]** - Input or Output? - Pin Function?
-* **Pin 32 [28]** - Input or Output? - Pin Function?
-* **Pin 33 [29]** - Input or Output? - Pin Function?
-* **Pin 34 [30]** - Input or Output? - Pin Function?
-* **Pin 35 [31]** - Input or Output? - Pin Function?
-* **Pin 36 [32]** - Input or Output? - Pin Function?
-* **Pin 37 [33]** - Input or Output? - Pin Function?
+
 
 ## External Hardware
 The external hardware components include 2 NES Controllers and a VGA Breakout Board which helps connect the output of the Digital to Analog Converter (DAC) to VGA. The schematic of the breadboard to interface everything will be located in doc/team_03.
