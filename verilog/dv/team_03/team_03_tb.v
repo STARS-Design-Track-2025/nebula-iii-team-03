@@ -178,7 +178,7 @@ module team_03_tb;
 
 		
 		// Wait for something to happen
-		repeat (10000) @(negedge clock);
+		repeat (30000) @(negedge clock);
 		
 		
 		$display("%c[1;32m",27);

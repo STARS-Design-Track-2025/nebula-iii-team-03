@@ -2,14 +2,14 @@
 module t03_instrHolder (
 	clk,
 	rst,
-	instruction_in,
+	dataOut,
 	freezeInstr,
 	instruction
 );
 	reg _sv2v_0;
 	input wire clk;
 	input wire rst;
-	input wire [31:0] instruction_in;
+	input wire [31:0] dataOut;
 	input wire freezeInstr;
 	output reg [31:0] instruction;
 	reg [31:0] registeredInstr;
@@ -24,7 +24,7 @@ module t03_instrHolder (
 		if (freezeInstr)
 			instruction = registeredInstr;
 		else
-			instruction = instruction_in;
+			instruction = dataOut;
 	end
 	initial _sv2v_0 = 0;
 endmodule

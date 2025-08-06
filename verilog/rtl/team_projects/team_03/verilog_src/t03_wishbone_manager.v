@@ -87,22 +87,27 @@ module t03_wishbone_manager (
 		case (curr_state)
 			2'd0: begin
 				if (WRITE_I && !READ_I) begin
+					next_ADR_O = ADR_I;
+					next_DAT_O = CPU_DAT_I;
+					next_SEL_O = SEL_I;
+					next_WE_O = 1'b1;
+					next_STB_O = 1'b1;
+					next_CYC_O = 1'b1;
 					next_BUSY_O = 1'b1;
 					next_state = 2'd1;
 				end
 				if (!WRITE_I && READ_I) begin
+					next_ADR_O = ADR_I;
+					next_DAT_O = 1'sb0;
+					next_SEL_O = SEL_I;
+					next_WE_O = 1'sb0;
+					next_STB_O = 1'b1;
+					next_CYC_O = 1'b1;
 					next_BUSY_O = 1'b1;
 					next_state = 2'd2;
 				end
 			end
-			2'd1: begin
-				next_ADR_O = ADR_I;
-				next_DAT_O = CPU_DAT_I;
-				next_SEL_O = SEL_I;
-				next_WE_O = 1'b1;
-				next_STB_O = 1'b1;
-				next_CYC_O = 1'b1;
-				next_BUSY_O = 1'b1;
+			2'd1, 2'd2:
 				if (ACK_I) begin
 					next_state = 2'd0;
 					next_ADR_O = 1'sb0;
@@ -113,26 +118,6 @@ module t03_wishbone_manager (
 					next_CYC_O = 1'sb0;
 					next_BUSY_O = 1'sb0;
 				end
-			end
-			2'd2: begin
-				next_ADR_O = ADR_I;
-				next_DAT_O = 1'sb0;
-				next_SEL_O = SEL_I;
-				next_WE_O = 1'sb0;
-				next_STB_O = 1'b1;
-				next_CYC_O = 1'b1;
-				next_BUSY_O = 1'b1;
-				if (ACK_I) begin
-					next_state = 2'd0;
-					next_ADR_O = 1'sb0;
-					next_DAT_O = 1'sb0;
-					next_SEL_O = 1'sb0;
-					next_WE_O = 1'sb0;
-					next_STB_O = 1'sb0;
-					next_CYC_O = 1'sb0;
-					next_BUSY_O = 1'sb0;
-				end
-			end
 			default: next_state = curr_state;
 		endcase
 	end

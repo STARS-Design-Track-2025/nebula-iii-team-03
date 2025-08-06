@@ -7,6 +7,7 @@ module t03_player_lut (
 	is_2_displayed,
 	player
 );
+	reg _sv2v_0;
 	parameter signed [31:0] player_height = 20;
 	parameter signed [31:0] player_width = 15;
 	input wire [3:0] player_state;
@@ -18,6 +19,8 @@ module t03_player_lut (
 	reg [2399:0] player_sprite;
 	reg [1:0] player_select;
 	always @(*) begin
+		if (_sv2v_0)
+			;
 		player_select = 0;
 		if (is_1_displayed)
 			player_select = player_state[1:0];
@@ -131,4 +134,5 @@ module t03_player_lut (
 		else
 			player = 0;
 	end
+	initial _sv2v_0 = 0;
 endmodule

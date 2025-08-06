@@ -1,12 +1,12 @@
 `default_nettype none
-module t03_player_2_display (
+module t03_player_1_display (
 	Hcnt,
 	Vcnt,
 	player,
 	color,
 	x,
 	y,
-	is_2_displayed,
+	is_1_displayed,
 	clk,
 	rst
 );
@@ -17,7 +17,7 @@ module t03_player_2_display (
 	output reg [7:0] color;
 	input wire [10:0] x;
 	input wire [10:0] y;
-	output reg is_2_displayed;
+	output reg is_1_displayed;
 	input clk;
 	input rst;
 	wire [10:0] min_x_to_display;
@@ -42,20 +42,18 @@ module t03_player_2_display (
 			;
 		next_color = color;
 		displacement = 0;
-		is_2_displayed = 0;
+		is_1_displayed = 0;
 		if (((Vcnt > y_text_placement) && (Vcnt < (y_text_placement + (y_length * 5)))) && ((Hcnt > x_text_placement) && (Hcnt <= (x_text_placement + x_length)))) begin
 			displacement = (x_length * y_length) - ((((Vcnt - y_text_placement) / 5) * x_length) + (Hcnt - x_text_placement));
-			is_2_displayed = 1;
-			if (player[(displacement * 8) + 7-:8] == 8'b11100000)
-				next_color[7:0] = 8'b00000111;
-			else if (player[(displacement * 8) + 7-:8] != 8'd0)
+			is_1_displayed = 1;
+			if (player[(displacement * 8) + 7-:8] != 8'd0)
 				next_color[7:0] = player[(displacement * 8) + 7-:8];
 			else
-				next_color[7:0] = 8'b00000000;
+				next_color[7:0] = 8'b01010111;
 		end
 		else begin
 			next_color[7:0] = 8'd0;
-			is_2_displayed = 0;
+			is_1_displayed = 0;
 		end
 	end
 	initial _sv2v_0 = 0;

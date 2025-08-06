@@ -13,8 +13,8 @@ module t03_DPUtop (
 	y2,
 	p1Left,
 	p2Left,
-	left,
-	right
+	right,
+	left
 );
 	input wire clk;
 	input wire rst;
@@ -29,8 +29,8 @@ module t03_DPUtop (
 	input wire [10:0] y2;
 	input wire p1Left;
 	input wire p2Left;
-	output wire [1:0] left;
 	output wire [7:0] right;
+	output wire [1:0] left;
 	wire [10:0] Vcnt;
 	wire [10:0] Hcnt;
 	wire tc;

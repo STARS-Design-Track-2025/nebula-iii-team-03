@@ -13,16 +13,12 @@ module t03_vertical_counter (
 	wire [10:0] vcnt_max;
 	reg [10:0] next_Vcnt;
 	assign vcnt_max = 11'd666;
-	reg [2:0] count;
-	wire [2:0] next_count;
 	always @(posedge clk or posedge rst)
 		if (rst) begin
 			Vcnt <= 0;
-			count <= 0;
 		end
 		else begin
 			Vcnt <= next_Vcnt;
-			count <= next_count;
 		end
 	always @(*) begin
 		if (_sv2v_0)

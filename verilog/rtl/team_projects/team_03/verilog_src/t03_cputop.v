@@ -32,9 +32,6 @@ module t03_cputop (
 	wire negative;
 	wire overflow;
 	wire lui;
-	wire hit;
-	wire next_hit;
-	wire cache_read;
 	wire [31:0] offset;
 	wire [31:0] ALUResult;
 	wire [31:0] currentPc;
@@ -43,16 +40,12 @@ module t03_cputop (
 	wire [31:0] read_data1;
 	wire [31:0] read_data2;
 	wire [31:0] immediate;
-	wire [31:0] cache_out;
-	wire [31:0] currentPc_base_address;
 	wire [1:0] pcControl;
 	wire [1:0] jump;
 	wire [2:0] branch;
 	wire [2:0] dataWidth;
 	wire [3:0] ALUOp;
 	assign data = read_data2;
-	wire [31:0] instruction_in;
-	assign instruction_in = (hit ? cache_out : dataOut);
 	t03_pc pc(
 		.clk(clk),
 		.rst(rst),
@@ -61,14 +54,12 @@ module t03_cputop (
 		.ALUResult(ALUResult),
 		.control(pcControl),
 		.currentPc(currentPc),
-		.currentPc_base_address(currentPc_base_address),
 		.toMemory(toMemory)
 	);
-	t03_requestUnitCached requestUnit(
+	t03_requestUnit requestUnit(
 		.clk(clk),
 		.rst(rst),
 		.ack(ack),
-		.next_hit(next_hit),
 		.memRead(memRead),
 		.memWrite(memWrite),
 		.pcMemory(toMemory),
@@ -78,13 +69,12 @@ module t03_cputop (
 		.freezePC(freezePc),
 		.freezeInstr(freezeInstr),
 		.addressSrc(addressSrc),
-		.address(address),
-		.cache_read(cache_read)
+		.address(address)
 	);
 	t03_instrHolder instrHolder(
 		.clk(clk),
 		.rst(rst),
-		.instruction_in(instruction_in),
+		.dataOut(dataOut),
 		.freezeInstr(freezeInstr),
 		.instruction(instruction)
 	);
@@ -116,17 +106,6 @@ module t03_cputop (
 		.pc(currentPc),
 		.read_data1(read_data1),
 		.read_data2(read_data2)
-	);
-	t03_instruction_cache instruction_cache(
-		.clk(clk),
-		.rst(rst),
-		.input_instruction(dataOut),
-		.next_address(toMemory),
-		.current_address(currentPc_base_address),
-		.hit(hit),
-		.cache_out(cache_out),
-		.next_hit(next_hit),
-		.cache_read(cache_read)
 	);
 	t03_imm_gen imm_gen(
 		.instruction(instruction),

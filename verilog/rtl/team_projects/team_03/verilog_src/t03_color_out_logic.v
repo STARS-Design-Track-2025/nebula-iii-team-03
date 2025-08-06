@@ -20,12 +20,12 @@ module t03_color_out_logic (
 	wire [10:0] min_y_to_display;
 	assign min_x_to_display = 37;
 	assign min_y_to_display = 29;
-	reg [7:0] background_color;
+	reg [10:0] background_color;
 	always @(*) begin
 		if (_sv2v_0)
 			;
 		background_color = 0;
-		if ((Hcnt > min_x_to_display) && (Hcnt < 11'd600)) begin
+		if ((Hcnt > min_x_to_display) && (Hcnt < 10'd600)) begin
 			if ((Vcnt > min_y_to_display) && (Vcnt < 600))
 				background_color = 8'b01010111;
 			if ((Vcnt >= 600) && (Vcnt < 800))

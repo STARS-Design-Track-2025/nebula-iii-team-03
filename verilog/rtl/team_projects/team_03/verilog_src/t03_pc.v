@@ -7,7 +7,6 @@ module t03_pc (
 	ALUResult,
 	control,
 	currentPc,
-	currentPc_base_address,
 	toMemory
 );
 	reg _sv2v_0;
@@ -19,7 +18,6 @@ module t03_pc (
 	input wire [31:0] ALUResult;
 	input wire [1:0] control;
 	output reg [31:0] currentPc;
-	output wire [31:0] currentPc_base_address;
 	output wire [31:0] toMemory;
 	reg [31:0] nextPc;
 	always @(posedge clk or posedge rst)
@@ -40,6 +38,5 @@ module t03_pc (
 		endcase
 	end
 	assign toMemory = nextPc + BASE_ADDRESS;
-	assign currentPc_base_address = currentPc + BASE_ADDRESS;
 	initial _sv2v_0 = 0;
 endmodule

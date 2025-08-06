@@ -49,7 +49,7 @@ module t03_player_1_display (
 			if (player[(displacement * 8) + 7-:8] != 8'd0)
 				next_color[7:0] = player[(displacement * 8) + 7-:8];
 			else
-				next_color[7:0] = 8'b01010111;
+				next_color[7:0] = 8'b00000000;
 		end
 		else begin
 			next_color[7:0] = 8'd0;

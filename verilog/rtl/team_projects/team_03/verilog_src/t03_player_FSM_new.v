@@ -74,7 +74,7 @@ module t03_player_FSM_new (
 					n_counting = 0;
 					n_player_state = 2'b00;
 				end
-				if (!buttonAPress || (counter >= THREE_QUARTER_COUNT))
+				if (!buttonAPress || (counter >= HALF_COUNT))
 					resting = 1;
 				else
 					resting = 0;
@@ -85,7 +85,7 @@ module t03_player_FSM_new (
 					n_counting = 0;
 					n_player_state = 2'b00;
 				end
-				if (!buttonBPress || (counter >= HALF_COUNT))
+				if (!buttonBPress)
 					resting = 1;
 				else
 					resting = 0;
