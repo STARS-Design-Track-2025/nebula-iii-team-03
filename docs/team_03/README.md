@@ -36,7 +36,7 @@ The first number represents the GPIO on the physical chip, while the second numb
 
 
 ## External Hardware
-The external hardware components include 2 NES Controllers and a VGA Breakout Board which helps connect the output of the Digital to Analog Converter (DAC) to VGA. The schematic of the breadboard DAC to interface the GPIO is located in doc/team_03.
+The external hardware components include 2 NES Controllers and a VGA Breakout Board which helps connect the output of the Digital to Analog Converter (DAC) to VGA. The schematic of the breadboard DAC to interface the GPIO is located in doc/team_03 as "Street Fighters Breadboard".
 
 ## Functionality Description and Testing
 Describe in detail how your project works and how to test it.
