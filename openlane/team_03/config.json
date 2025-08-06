@@ -32,7 +32,7 @@
     "dir::../../verilog/rtl/team_projects/team_03/src/t03_player_FSM_new.v",
     "dir::../../verilog/rtl/team_projects/team_03/src/t03_player_lut.v",
     "dir::../../verilog/rtl/team_projects/team_03/src/t03_registerFile.v",
-    "dir::../../verilog/rtl/team_projects/team_03/src/t03_CachedrequestUnit.v",
+    "dir::../../verilog/rtl/team_projects/team_03/src/t03_requestUnitCached.v",
     "dir::../../verilog/rtl/team_projects/team_03/src/t03_text_display.v",
     "dir::../../verilog/rtl/team_projects/team_03/src/t03_text_lut.v",
     "dir::../../verilog/rtl/team_projects/team_03/src/t03_vertical_counter.v",
