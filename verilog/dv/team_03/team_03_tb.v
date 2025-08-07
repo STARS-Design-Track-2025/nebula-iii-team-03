@@ -29,6 +29,53 @@ module team_03_tb;
 	wire [37:0] mprj_io;
 	wire [33:0] check_bits;
 	reg [37:0] mprj_io_in;
+	
+	// Player Pins
+	reg p1_in, p2_in;
+	assign mprj_io[18:17] = {p2_in, p1_in};
+
+	task simulateInputs(input logic [7:0] NESInputP1, input logic [7:0] NESInputP2);
+    begin
+        $display("simulating controller with inputs %b and %b", NESInputP1, NESInputP2);
+
+        //p2_in is controller 2
+
+        @ (posedge mprj_io[16]); //Latch
+        p1_in = NESInputP1[7];
+        p2_in = NESInputP2[7];
+
+        @ (posedge mprj_io[15]); //Pulse
+        p1_in = NESInputP1[6];
+        p2_in = NESInputP2[6];
+
+        @ (posedge mprj_io[15]); //Pulse
+        p1_in = NESInputP1[5];
+        p2_in = NESInputP2[5];
+        
+        @ (posedge mprj_io[15]); //Pulse
+        p1_in = NESInputP1[4];
+        p2_in = NESInputP2[4];
+        
+        @ (posedge mprj_io[15]); //Pulse
+        p1_in = NESInputP1[3];
+        p2_in = NESInputP2[3];
+
+        @ (posedge mprj_io[15]); //Pulse
+        p1_in = NESInputP1[2];
+        p2_in = NESInputP2[2];
+
+        @ (posedge mprj_io[15]); //Pulse
+        p1_in = NESInputP1[1];
+        p2_in = NESInputP2[1];
+
+        @ (posedge mprj_io[15]); //Pulse
+        p1_in = NESInputP1[0];
+        p2_in = NESInputP2[0];
+
+        @ (posedge mprj_io[15]); //Pulse
+        p2_in = 1'b0;
+    end
+endtask
 
 	// Signals assignments
 	assign check_bits = {mprj_io[37:5], mprj_io[0]};
@@ -145,10 +192,10 @@ module team_03_tb;
 	// Signal dump and timeout check
 	initial begin
 		$dumpfile("team_03.vcd");
-		$dumpvars(0, team_03_tb.mprj_io, team_03_tb.uut.chip_core.mprj);
+		$dumpvars(0, team_03_tb.mprj_io, team_03_tb.p1_in, team_03_tb.p2_in, team_03_tb.uut.chip_core.mprj);
 
 		// Repeat cycles of 1000 clock edges as needed to complete testbench
-		repeat (10000) begin
+		repeat (100000) begin
 			repeat (1000) @(posedge clock);
 		end
 		$display("%c[1;31m",27);
@@ -163,24 +210,24 @@ module team_03_tb;
 
 	// Main Test Bench Process
 	initial begin
-
-		// *******************************
-		// WRITE TESTBENCH HERE!!
-		// 
-		// Wait for design to be enabled
-		// before doing any checks
-		// *******************************
-
+		// Initialize inputs
+		p1_in = 1;
+		p2_in = 1;
 
 		// Wait until Team 03 enables
 		wait(uut.chip_core.mprj.mprj.team_03_Wrapper.team_03_WB.instance_to_wrap.en == 1);
 		$display("\nTeam 03 has been enabled!!\n");
 
+	
+		// Simulate inpus
+		simulateInputs(8'b11101111, 8'b11111111);
+    	simulateInputs(8'b11111101, 8'b11111111);
+    	simulateInputs(8'b11111101, 8'b11111111);
+
+		// Wait a bit more
+		repeat (900000) @(negedge clock);
 		
-		// Wait for something to happen
-		repeat (100000) @(negedge clock);
-		
-		
+		// Finish Testbench
 		$display("%c[1;32m",27);
 		`ifdef GL
 	    	$display("Monitor: NEBULA Team 03 (GL) Passed");
