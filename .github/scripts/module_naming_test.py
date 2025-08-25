@@ -84,6 +84,17 @@ for team, team_folder in zip(teams, team_folders):
     print(f"Checking files for: {team}")
     
     team_files = glob.glob(f'{team_folder}/**/*.v', recursive=True) + glob.glob(f'{team_folder}/**/*.sv', recursive=True)
+
+    file_map = {}
+    for f in team_files:
+        base, ext = os.path.splicetext(f)
+        if base not in file_map:
+            file_map[base] = f
+        else:
+            if ext == ".v":
+                file_map[base] = f
+
+    team_files = list(file_map.values())
     
     # Find the names of each module.
     module_pattern = re.compile(r'\bmodule\s+(\w+)\s*#?\(')
@@ -109,4 +120,5 @@ for team, team_folder in zip(teams, team_folders):
 print(f"Total Number of Naming Issues: {error_count}")
 if(error_count > 0):
     print("Exiting with nonzero number of naming issues")
+
     sys.exit(1)
