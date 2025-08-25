@@ -87,7 +87,7 @@ for team, team_folder in zip(teams, team_folders):
 
     file_map = {}
     for f in team_files:
-        base, ext = os.path.splicetext(f)
+        base, ext = os.path.splittext(f)
         if base not in file_map:
             file_map[base] = f
         else:
@@ -122,3 +122,4 @@ if(error_count > 0):
     print("Exiting with nonzero number of naming issues")
 
     sys.exit(1)
+
