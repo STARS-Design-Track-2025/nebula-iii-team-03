@@ -6,7 +6,7 @@ import re
 INTEGRATION_MODE = False
 
 # Define allowed (non-team) directories
-ALLOWED_DIRECTORIES = {".github", "def", "docs", "gds", "lef", "lib", "mag", "sdc", "signoff", "spef", "spi", "verilog/rtl/team_projects"}
+ALLOWED_DIRECTORIES = {".github", "def", "docs", "gds", "lef", "lib", "mag", "sdc", "signoff", "spef", "spi", "verilog/rtl/team_projects", "spi", "verilog/gl"}
 
 # Only change commit hash if you are a member of the post-program integration team.  All others will be banished off the face of the Earth
 STABLE_COMMIT_HASH = "19ba091a278ba748181f252359608233768a357b"  # 08/05/2025
